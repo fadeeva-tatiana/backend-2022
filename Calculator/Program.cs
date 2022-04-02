@@ -36,7 +36,7 @@ namespace CalculatorProgram
 
                 string operation = Console.ReadLine();
 
-                static void Trigonometry(string operation, string number1 = string.Empty, string number2 = string.Empty, double result = 0)
+                static void Trigonometry(string operation, string number1 = "", string number2 = "", double result = 0)
                 {
                     // Просим пользователя ввести первое число.
                     Calculator calculator = new Calculator();
