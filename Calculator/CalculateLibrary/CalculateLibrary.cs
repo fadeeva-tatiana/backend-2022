@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Diagnostics;
 using Newtonsoft.Json;
@@ -21,35 +21,64 @@ namespace CalculatorLibrary
             writer.WriteStartArray();
         }
 
-        public double DoOperation(double num1, double num2, string op)
+        public double DoOperation(double number1, double number2, string operation)
         {
             double result = double.NaN; // Значение по умолчанию — «не число», если операция, такая как деление, может привести к ошибке..
             writer.WriteStartObject();
             writer.WritePropertyName("Operand1");
-            writer.WriteValue(num1);
+            writer.WriteValue(number1);
             writer.WritePropertyName("Operand2");
-            writer.WriteValue(num2);
+            writer.WriteValue(number2);
             writer.WritePropertyName("Operation");
+        
             // Используем оператор switch, чтобы выполнить математические вычисления.
-            switch (op)
+            switch (operation)
             {
-                case "a":
-                    result = num1 + num2;
+
+                case "cotangent":
+                    result = 1 / Math.Tan(number1);
+                    writer.WriteValue("Cotangent");
+                    break;
+                case "tangent":
+                    result = Math.Tan(number1);
+                    writer.WriteValue("Tangent");
+                    break;
+                case "sqrt":
+                    result = Math.Sqrt(number1);
+                    writer.WriteValue("Sqrt");
+                    break;
+                case "cosinus":
+                    result = Math.Cos(number1);
+                    writer.WriteValue("Cosinus");
+                    break;
+                case "sinus":
+                    result = Math.Sin(number1);
+                    writer.WriteValue("Sinus");
+                    break;
+                case "add":
+                    result = number1 + number2;
                     writer.WriteValue("Add");
                     break;
-                case "s":
-                    result = num1 - num2;
+                case "substract":
+                    result = number1 - number2;
                     writer.WriteValue("Subtract");
                     break;
-                case "m":
-                    result = num1 * num2;
+                case "multiply":
+                    result = number1 * number2;
                     writer.WriteValue("Multiply");
                     break;
-                case "d":
-                    // Просим пользователя ввести ненулевой делитель.
-                    if (num2 != 0)
+                case "mod":
+                    if (number2 != 0)
                     {
-                        result = num1 / num2;
+                        result = number1 % number2;
+                    }
+                    writer.WriteValue("Mod");
+                    break;
+                case "divide":
+                    // Просим пользователя ввести ненулевой делитель.
+                    if (number2 != 0)
+                    {
+                        result = number1 / number2;
                     }
                     writer.WriteValue("Divide");
                     break;
