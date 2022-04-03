@@ -1,4 +1,4 @@
-﻿using ScrumBoard.Creator;
+using ScrumBoard.Creator;
 using ScrumBoard.Body;
 
 namespace ScrumBoard
@@ -45,7 +45,7 @@ namespace ScrumBoard
 
         private static void Print_column(ColumnInterface column) //Печатаем в консоль колонки
         {
-            Console.WriteLine($"== {column.Title} ==");
+            Console.WriteLine($"| {column.Title} |");
             Print_tasks(column);
         }
 
@@ -56,13 +56,13 @@ namespace ScrumBoard
             Print_board(board);
 
             //Добавляем первое задание 
-            TaskInterface FinishTheApp = ScrumBoardCreator.Create_task("Finish the app", "Complete to deadline", Task_priority.HARD);
+            TaskInterface FinishTheApp = ScrumBoardCreator.Create_task("Finish the app", "Complete as soon as possible", Task_priority.HARD);
             board.Add_task_to_column(FinishTheApp, "In Progress");
             Console.WriteLine("\nTask added in \"In Progress\" \n");
             Print_board(board);
 
             board.Rename_task("Finish the app", "Create an app");
-            board.Change_task_description("Finish the app", "complete to deadline, but it's not soon");
+            board.Change_task_description("Create an app", "complete to deadline, but it's not soon");
             board.Change_task_priority("Create an app", Task_priority.MEDIUM);
             Console.WriteLine("\nApp task are updated\n");
             Print_board(board);
@@ -77,12 +77,12 @@ namespace ScrumBoard
             Console.WriteLine("\nTask moved\n");
             Print_board(board);
 
-            board.Move_task("Finish the app");
+            board.Move_task("Create an app");
             board.Move_task("Wipe the dust");
-            Console.WriteLine("\nAll tasks done\n");
+            Console.WriteLine("\nAll tasks completed\n");
             Print_board(board);
 
-            board.Delete_task("Finish the app");
+            board.Delete_task("Create an app");
             board.Delete_task("Wipe the dust");
             Console.WriteLine("\nAll tasks are removed\n");
             Print_board(board);
