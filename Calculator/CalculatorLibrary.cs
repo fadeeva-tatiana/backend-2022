@@ -1,13 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Diagnostics;
 using Newtonsoft.Json;
 
-namespace CalculatorLibrary
+namespace MathematicalCalculations
 {
     public class Calculator
     {
-
         JsonWriter writer;
 
         public Calculator()
@@ -34,7 +33,6 @@ namespace CalculatorLibrary
             // Используем оператор switch, чтобы выполнить математические вычисления.
             switch (operation)
             {
-
                 case "cotangent":
                     result = 1 / Math.Tan(number1);
                     writer.WriteValue("Cotangent");
@@ -63,7 +61,12 @@ namespace CalculatorLibrary
                     result = number1 - number2;
                     writer.WriteValue("Subtract");
                     break;
-                case "multiply":
+                case "multiply":  
+                    if (number1 >= 100000 || number2 >= 100000)
+                    {
+                        Console.WriteLine("You entered too large value, enter numbers up to 100000\n");
+                        break;
+                    }
                     result = number1 * number2;
                     writer.WriteValue("Multiply");
                     break;
@@ -89,7 +92,6 @@ namespace CalculatorLibrary
             writer.WritePropertyName("Result");
             writer.WriteValue(result);
             writer.WriteEndObject();
-
             return result;
         }
 
