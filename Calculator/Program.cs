@@ -1,5 +1,5 @@
-﻿using System;
-using CalculatorLibrary;
+using System;
+using MathematicalCalculations;
 
 namespace CalculatorProgram
 {
@@ -18,7 +18,6 @@ namespace CalculatorProgram
                 // Объявляем переменные и устанавливаем их пустыми.
                 string number1 = string.Empty;
                 string number2 = string.Empty;
-                double result = 0;
 
                 // Просим пользователя выбрать оператора.
                 Console.WriteLine("Choose an operator from the following list:");
@@ -36,12 +35,51 @@ namespace CalculatorProgram
 
                 string operation = Console.ReadLine();
 
-                static void Trigonometry(string operation, string number1 = "", string number2 = "", double result = 0)
+                if (operation != "add")
+                {
+                    if (operation != "substract")
+                    {
+                        if (operation != "multiply")
+                        {
+                            if (operation != "divide")
+                            {
+                                if (operation != "mod")
+                                {
+                                    if (operation != "sinus")
+                                    {
+                                        if (operation != "cosinus")
+                                        {
+                                            if (operation != "tangent")
+                                            {
+                                                if (operation != "cotangent")
+                                                {
+                                                    if (operation != "sqrt")
+                                                    {
+                                                        Console.Write("ERROR! You type incorrect value, type your option: ");
+                                                        operation = Console.ReadLine();
+                                                        return;
+                                                    }
+                                                    else
+                                                    {
+                                                        continue;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                static void Trigonometry(string operation)
                 {
                     // Просим пользователя ввести первое число.
                     Calculator calculator = new Calculator();
                     Console.Write("Type a number, and then press Enter: ");
-                    number1 = Console.ReadLine();
+                    double result = 0;
+                    string number1 = Console.ReadLine();
                     double clearingNumber1 = 0;
                     double clearingNumber2 = 0;
                     while (!double.TryParse(number1, out clearingNumber1))
@@ -68,7 +106,7 @@ namespace CalculatorProgram
 
                 if (operation == "sqrt")
                 {
-                    Trigonometry(operation, number1, number2, result);
+                    Trigonometry(operation);
                     if (Console.ReadLine() == "n") endApp = true;
                     Console.WriteLine("\n");
                     calculator.Finish();
@@ -77,7 +115,7 @@ namespace CalculatorProgram
 
                 if (operation == "sinus")
                 {
-                    Trigonometry(operation, number1, number2, result);
+                    Trigonometry(operation);
                     if (Console.ReadLine() == "n") endApp = true;
                     Console.WriteLine("\n");
                     calculator.Finish();
@@ -86,7 +124,7 @@ namespace CalculatorProgram
 
                 if (operation == "cosinus")
                 {
-                    Trigonometry(operation, number1, number2, result);
+                    Trigonometry(operation);
                     if (Console.ReadLine() == "n") endApp = true;
                     Console.WriteLine("\n");
                     calculator.Finish();
@@ -95,7 +133,7 @@ namespace CalculatorProgram
 
                 if (operation == "tangent")
                 {
-                    Trigonometry(operation, number1, number2, result);
+                    Trigonometry(operation);
                     if (Console.ReadLine() == "n") endApp = true;
                     Console.WriteLine("\n");
                     calculator.Finish();
@@ -104,7 +142,7 @@ namespace CalculatorProgram
 
                 if (operation == "cotangent")
                 {
-                    Trigonometry(operation, number1, number2, result);
+                    Trigonometry(operation);
                     if (Console.ReadLine() == "n") endApp = true;
                     Console.WriteLine("\n");
                     calculator.Finish();
@@ -112,6 +150,7 @@ namespace CalculatorProgram
                 }
 
                 // Просим пользователя ввести и первое, и второе число.
+                double result = 0;
                 double clearingNumber1 = 0;
                 double clearingNumber2 = 0;
                 Console.Write("Type a first number, and then press Enter: ");
