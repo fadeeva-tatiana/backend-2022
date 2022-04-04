@@ -1,4 +1,4 @@
-﻿namespace ScrumBoard.Body
+namespace ScrumBoard.Body
 {
     public interface BoardInterface
     {
@@ -10,6 +10,7 @@
         public void Move_task(string taskTitle);
 
         public string Title { get; }
+        public ColumnInterface? Find_column_by_title(string title);
         public void Add_column(ColumnInterface column);
         public void Rename_column(string columnTitle, string newTitle);
         public IReadOnlyCollection<ColumnInterface> Find_columns();
