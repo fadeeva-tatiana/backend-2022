@@ -18,6 +18,7 @@ namespace CalculatorProgram
                 // Объявляем переменные и устанавливаем их пустыми.
                 string number1 = string.Empty;
                 string number2 = string.Empty;
+                //string operation = string.Empty;
 
                 // Просим пользователя выбрать оператора.
                 Console.WriteLine("Choose an operator from the following list:");
@@ -35,42 +36,81 @@ namespace CalculatorProgram
 
                 string operation = Console.ReadLine();
 
-                if (operation != "add")
-                {
-                    if (operation != "substract")
-                    {
-                        if (operation != "multiply")
+                switch (operation)
+                { 
+                    case "add":
+                        break;
+
+                    case "substract":
+                        break;
+
+                    case "multiply":
+                        break;
+
+                    case "divide":
+                        break;
+
+                    case "mod":
+                        break;
+
+                    case "sinus":
+                        Trigonometry(operation);
+                        if (Console.ReadLine() == "n")
                         {
-                            if (operation != "divide")
-                            {
-                                if (operation != "mod")
-                                {
-                                    if (operation != "sinus")
-                                    {
-                                        if (operation != "cosinus")
-                                        {
-                                            if (operation != "tangent")
-                                            {
-                                                if (operation != "cotangent")
-                                                {
-                                                    if (operation != "sqrt")
-                                                    {
-                                                        Console.Write("ERROR! You type incorrect value, type your option: ");
-                                                        operation = Console.ReadLine();
-                                                        return;
-                                                    }
-                                                    else
-                                                    {
-                                                        continue;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            endApp = true;
                         }
-                    }
+                        Console.WriteLine("\n");
+                        calculator.Finish();
+                        return;
+                        break;
+
+                    case "cosinus":
+                        Trigonometry(operation);
+                        if (Console.ReadLine() == "n")
+                        {
+                            endApp = true;
+                        }
+                        Console.WriteLine("\n");
+                        calculator.Finish();
+                        return;
+                        break;               
+                    
+                    case "tangent":
+                        Trigonometry(operation);
+                        if (Console.ReadLine() == "n")
+                        {
+                            endApp = true;
+                        }
+                        Console.WriteLine("\n");
+                        calculator.Finish();
+                        return;
+                        break;
+
+                    case "cotangent":
+                        Trigonometry(operation);
+                        if (Console.ReadLine() == "n")
+                        {
+                            endApp = true;
+                        }
+                        Console.WriteLine("\n");
+                        calculator.Finish();
+                        return;
+                        break;
+
+                    case "sqrt":
+                        Trigonometry(operation);
+                        if (Console.ReadLine() == "n")
+                        {
+                            endApp = true;
+                        }
+                        Console.WriteLine("\n");
+                        calculator.Finish();
+                        return;
+                        break;
+
+                    default:
+                        Console.WriteLine("ERROR! You type incorrect value, type your option: ");
+                        break;
                 }
 
                 static void Trigonometry(string operation)
@@ -102,51 +142,6 @@ namespace CalculatorProgram
                     }
                     // Ждем, пока пользователь ответит, прежде чем закрыть.
                     Console.Write("Press 'n' and Enter to close the app, or press any other key and Enter to continue: ");
-                }
-
-                if (operation == "sqrt")
-                {
-                    Trigonometry(operation);
-                    if (Console.ReadLine() == "n") endApp = true;
-                    Console.WriteLine("\n");
-                    calculator.Finish();
-                    return;
-                }
-
-                if (operation == "sinus")
-                {
-                    Trigonometry(operation);
-                    if (Console.ReadLine() == "n") endApp = true;
-                    Console.WriteLine("\n");
-                    calculator.Finish();
-                    return;
-                }
-
-                if (operation == "cosinus")
-                {
-                    Trigonometry(operation);
-                    if (Console.ReadLine() == "n") endApp = true;
-                    Console.WriteLine("\n");
-                    calculator.Finish();
-                    return;
-                }
-
-                if (operation == "tangent")
-                {
-                    Trigonometry(operation);
-                    if (Console.ReadLine() == "n") endApp = true;
-                    Console.WriteLine("\n");
-                    calculator.Finish();
-                    return;
-                }
-
-                if (operation == "cotangent")
-                {
-                    Trigonometry(operation);
-                    if (Console.ReadLine() == "n") endApp = true;
-                    Console.WriteLine("\n");
-                    calculator.Finish();
-                    return;
                 }
 
                 // Просим пользователя ввести и первое, и второе число.
