@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.1.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BoardInterface\BoardInterface.csproj" />
+    <ProjectReference Include="..\Board\Board.csproj" />
+    <ProjectReference Include="..\ColumnInterface\ColumnInterface.csproj" />
+    <ProjectReference Include="..\Columns\Columns.csproj" />
+    <ProjectReference Include="..\ScrumBoardCreator\ScrumBoardCreator.csproj" />
+    <ProjectReference Include="..\ScrumBoard\ScrumBoard.csproj" />
+    <ProjectReference Include="..\ScrumTest\ScrumTest.csproj" />
+    <ProjectReference Include="..\SpecialCases\SpecialCases.csproj" />
+    <ProjectReference Include="..\TaskInterface\TaskInterface.csproj" />
+    <ProjectReference Include="..\Tasks\Tasks.csproj" />
+  </ItemGroup>
+
+</Project>
