@@ -11,8 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ScrumBoardRepositoryInterface\ScrumBoardRepositoryInterface.csproj" />
-    <ProjectReference Include="..\ScrumBoardRepository\ScrumBoardRepository.csproj" />
+    <ProjectReference Include="..\..\ScrumBoard\ScrumBoard\ScrumBoard.csproj" />
+    <ProjectReference Include="..\BoardDTO\BoardDTO.csproj" />
+    <ProjectReference Include="..\ColumnsDTO\ColumnsDTO.csproj" />
+    <ProjectReference Include="..\ScrumBoardRepositoryInterface\WebScrumBoardStorageInterface.csproj" />
+    <ProjectReference Include="..\ScrumBoardRepository\WebScrumBoardStorage.csproj" />
+    <ProjectReference Include="..\TasksDTO\TasksDTO.csproj" />
   </ItemGroup>
 
 </Project>
