@@ -1,4 +1,6 @@
-﻿namespace ScrumBoard.Body
+using ScrumBoard.SpecialCases;
+
+namespace ScrumBoard.Body
 {
     public class Board : BoardInterface
     {
@@ -10,20 +12,27 @@
                 if (task != null)
                 {
                     task.Priority = newPriority;
-                    break;
+                    return;
                 }
             }
+            throw new Task_not_found();
         }
         public string Title { get; }
+        public string ID { get; }
 
-        public Board(string title)
+        public Board(string identifier, string title)
         {
+            ID = identifier;
             Title = title;
             _columns = new();
         }
 
         public void Add_column(ColumnInterface column)
         {
+            if (_columns.Count == MAX_COLUMNS)
+            {
+                throw new Maximum_columns();
+            }
             _columns.Add(column);
         }
 
@@ -45,6 +54,10 @@
                 return;
             }
             ColumnInterface? column = Find_column_by_title(columnTitle);
+            if (column == null)
+            {
+                throw new Column_not_found();
+            }
             column.Add_task(task);
         }
         public void Move_task(string taskTitle)
@@ -57,6 +70,10 @@
                 task = _columns[i].Find_task_by_title(taskTitle);
                 if (task != null)
                 {
+                    if (i == _columns.Count - 1)
+                    {
+                        throw new Final_column_achieved();
+                    }
                     _columns[i].Delete_task_by_title(taskTitle);
                     nextColumnIndex = i + 1;
                     break;
@@ -66,7 +83,9 @@
             if (nextColumnIndex != 0 && task != null)
             {
                 _columns[nextColumnIndex].Add_task(task);
+                return;
             }
+            throw new Task_not_found();
         }
         public void Delete_task(string taskTitle)
         {
@@ -79,6 +98,10 @@
         public void Rename_column(string columnTitle, string newTitle)
         {
             ColumnInterface? column = Find_column_by_title(columnTitle);
+            if (column == null)
+            {
+                throw new Column_not_found();
+            }
             column.Title = newTitle;
         }
 
@@ -93,6 +116,7 @@
                     break;
                 }
             }
+            throw new SpecialCases.Task_not_found();
         }
 
         public void Change_task_description(string taskTitle, string newDescription)
@@ -106,6 +130,7 @@
                     break;
                 }
             }
+            throw new Task_not_found();
         }
 
         private const int MAX_COLUMNS = 10;
