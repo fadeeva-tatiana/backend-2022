@@ -1,11 +1,13 @@
-﻿namespace ScrumBoard.Body
+namespace ScrumBoard.Body
 {
     public class Column : ColumnInterface
     {
         public string Title { get; set; }
+        public string ID { get; }
 
-        public Column(string title)
+        public Column(string identifier, string title)
         {
+            ID = identifier;
             Title = title;
             _tasks = new();
         }
